@@ -4,11 +4,11 @@ int petals = 10;  // Number of petals at each level
 void setup() {
   size(600, 600);
   background(0);  
-  drawRoseFractal(200, 0, maxDepth);
+  drawRoseFractal(200, maxDepth);
 }
 
 // Recursive function to draw a rose
-void drawRoseFractal(float radius, float angle, int depth) {
+void drawRoseFractal(float radius, int depth) {
   if (depth == 0) return;  // Base case stop recursion
   float angleIncrement = TWO_PI / petals; 
 
@@ -21,6 +21,6 @@ void drawRoseFractal(float radius, float angle, int depth) {
     ellipse(300+x, 300+y, radius, radius);  // Draw petal
 
     // Recursive call with smaller radius
-    drawRoseFractal(radius * 0.6, i * angleIncrement, depth - 1);
+    drawRoseFractal(radius * 0.6, depth - 1);
   }
 }
