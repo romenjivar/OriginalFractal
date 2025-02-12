@@ -13,14 +13,14 @@ void drawRoseFractal(float radius, float angle, int depth) {
   float angleIncrement = TWO_PI / petals; 
 
   for (int i = 0; i < petals; i++) {
-    float x = cos(angle + i * angleIncrement) * radius;
-    float y = sin(angle + i * angleIncrement) * radius;
+    float x = cos(i * angleIncrement) * radius;
+    float y = sin(i * angleIncrement) * radius;
 
     fill(255, 0, 0, 150); 
     stroke(0);
     ellipse(300+x, 300+y, radius, radius);  // Draw petal
 
     // Recursive call with smaller radius
-    drawRoseFractal(radius * 0.6, angle + i * angleIncrement, depth - 1);
+    drawRoseFractal(radius * 0.6, i * angleIncrement, depth - 1);
   }
 }
