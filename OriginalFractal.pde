@@ -1,5 +1,5 @@
- int maxDepth = 8;  // Controls how deep the recursion goes
-int petals = 12;  // Number of petals at each level
+ int maxDepth = 5;  // Controls how deep the recursion goes
+int petals = 10;  // Number of petals at each level
 int sign = (int)(Math.random()*2)+1;
 void setup() {
   size(600, 600);
@@ -11,9 +11,9 @@ void setup() {
 void drawRoseFractal(float radius, int depth) {
   if (depth == 0) return;  // Base case stop recursion
   float angleIncrement = TWO_PI / petals; 
-  int r = 190;
+  int r = 180;
   int g = 25;
-  int b = 40;
+  int b = 60;
 
   for (int i = 0; i < petals; i++) {
     float x = cos(i * angleIncrement) * radius;
@@ -21,13 +21,15 @@ void drawRoseFractal(float radius, int depth) {
 
     if(sign == 1){
     r += 15;
-    g -= 15;
-    b -= 15;
+    g += 20;
+     b += 20;
+     
     }
     else{
-     r -= 15;
-     b += 15;
-     g+= 15;
+     r += 15;
+     g += 15;
+     b += 20;
+     
     }
     fill(r, g, b); 
     stroke(0);
@@ -35,5 +37,6 @@ void drawRoseFractal(float radius, int depth) {
 
     // Recursive call with smaller radius
     drawRoseFractal(radius * 0.6, depth - 1);
+    System.out.println(sign);
   }
 }
